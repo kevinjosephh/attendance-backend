@@ -8,6 +8,10 @@ class UsersBO:
     def __init__(self):
         self.users_repository = StudentsRepository()
 
+    def _read(self, document):
+        user = self.users_repository.read(document=document)
+        return user
+
     def login(self, email, password):
         user = self.users_repository.read(email)
         if user is not None and not ('account' in user and user['account'] or 'deleted' in user and user['deleted']):
@@ -34,9 +38,9 @@ class UsersBO:
             'password': hashed.hexdigest(),
             'salt': salt,
         }
-        user = self.users_repository.read(email=email)
+        user = self._read(document={'email': email})
         if user is None:
             self.users_repository.create(document)
             # TODO send email with the reset link.
-            return self.users_repository.read(email=email)
+            return self._read(document={'email': email})
         raise Exception('User %s already exist' % email)
