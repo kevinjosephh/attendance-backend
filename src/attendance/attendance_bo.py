@@ -21,13 +21,14 @@ class AttendanceBO:
         }
         attendance = self.attendance_repository.read(document={'_id': bson.ObjectId(id)})
         today = datetime.today()
-        if (attendance['created_at']).strftime('%Y-%m-%d') != today.strftime('%Y-%m-%d'):
+        if attendance is None or (attendance['created_at']).strftime('%Y-%m-%d') != today.strftime('%Y-%m-%d'):
             self.attendance_repository.create(document=document)
             return '%s Successful' % user['roll_no']
         else:
             return '%s has been already marked' % user['roll_no']
 
     def fliter_class(self, name, date):
-        start_date = date.replace(hour=0, minute=0, second=0)
-        end_date = date.replace(hour=23, minute=59, second=59)
-        return self.attendance_repository.read_all(document={'classroom': name, 'created_at': {'gte':start_date,'lte':end_date}})
+        date_obj = datetime.strptime(date, '%Y-%m-%d')
+        start_date = date_obj.replace(hour=0, minute=0, second=0)
+        end_date = date_obj.replace(hour=23, minute=59, second=59)
+        return self.attendance_repository.read_all(document={'classroom': name, 'created_at': {'$gte':start_date,'$lte':end_date}})

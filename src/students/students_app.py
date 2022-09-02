@@ -35,7 +35,7 @@ def register():
     email = str(data['email']).strip().lower()
     password = str(data['password']).strip()
     token = users_bo.register(email=email, password=password, first_name=first_name, last_name=last_name, role=role, roll_no=roll_no, class_name=class_name)
-    return jsonify({'token': token})
+    return json_util.dumps(token)
 
 @users_blueprint.route('/log', methods=['POST'])
 def log():
@@ -43,7 +43,7 @@ def log():
     id = str(data['id']).strip()
     return attendance_bo.log_attendance(id=id)
 
-@users_blueprint.route('/log', methods=['POST'])
+@users_blueprint.route('/student_log', methods=['POST'])
 def get_log():
     data = json.loads(request.data)
     name = str(data['class_name']).strip()

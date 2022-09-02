@@ -373,3 +373,835 @@ TypeError: Object of type ObjectId is not JSON serializable
  * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
 2022-08-31 21:59:57,891 INFO werkzeug Thread-1 : 127.0.0.1 - - [31/Aug/2022 21:59:57] "POST /users/api/v1/login HTTP/1.1" 200 -
 2022-08-31 22:00:08,353 INFO werkzeug Thread-2 : 127.0.0.1 - - [31/Aug/2022 22:00:08] "POST /users/api/v1/login HTTP/1.1" 200 -
+2022-09-02 11:30:11,331 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 11:31:01,310 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/login [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 24, in login
+    user = users_bo.login(email, password)
+  File "/home/kevin/attendance-backend/src/students/students_bo.py", line 16, in login
+    user = self.users_repository.read(email)
+  File "/home/kevin/attendance-backend/src/students/students_repository.py", line 20, in read
+    return self.schema.find_one(filter=document)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/collection.py", line 1452, in find_one
+    for result in cursor.limit(-1):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1248, in next
+    if len(self.__data) or self._refresh():
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1139, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1712, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1657, in __start_session
+    self._topology._check_implicit_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 538, in _check_implicit_session_support
+    self._check_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 554, in _check_session_support
+    self._select_servers_loop(
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 238, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-01.p8phn.mongodb.net:27017: [Errno 111] Connection refused, Timeout: 30s, Topology Description: <TopologyDescription id: 63119bebd98a88de22af3253, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('rdnc-shard-00-00.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-01.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-01.p8phn.mongodb.net:27017: [Errno 111] Connection refused')>, <ServerDescription ('rdnc-shard-00-02.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed')>]>
+2022-09-02 11:31:01,366 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 11:31:01] "[35m[1mPOST /users/api/v1/login HTTP/1.1[0m" 500 -
+2022-09-02 11:33:09,440 ERROR rest_server_app Thread-2 : Exception on /users/api/v1/login [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 24, in login
+    user = users_bo.login(email, password)
+  File "/home/kevin/attendance-backend/src/students/students_bo.py", line 16, in login
+    user = self.users_repository.read(email)
+  File "/home/kevin/attendance-backend/src/students/students_repository.py", line 20, in read
+    return self.schema.find_one(filter=document)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/collection.py", line 1452, in find_one
+    for result in cursor.limit(-1):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1248, in next
+    if len(self.__data) or self._refresh():
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1139, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1712, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1657, in __start_session
+    self._topology._check_implicit_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 538, in _check_implicit_session_support
+    self._check_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 554, in _check_session_support
+    self._select_servers_loop(
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 238, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed, Timeout: 30s, Topology Description: <TopologyDescription id: 63119bebd98a88de22af3253, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('rdnc-shard-00-00.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-01.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-02.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed')>]>
+2022-09-02 11:33:09,442 INFO werkzeug Thread-2 : 127.0.0.1 - - [02/Sep/2022 11:33:09] "[35m[1mPOST /users/api/v1/login HTTP/1.1[0m" 500 -
+2022-09-02 11:34:13,146 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 11:34:50,455 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/login [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 24, in login
+    user = users_bo.login(email, password)
+  File "/home/kevin/attendance-backend/src/students/students_bo.py", line 16, in login
+    user = self.users_repository.read(email)
+  File "/home/kevin/attendance-backend/src/students/students_repository.py", line 20, in read
+    return self.schema.find_one(filter=document)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/collection.py", line 1452, in find_one
+    for result in cursor.limit(-1):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1248, in next
+    if len(self.__data) or self._refresh():
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1139, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1712, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1657, in __start_session
+    self._topology._check_implicit_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 538, in _check_implicit_session_support
+    self._check_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 554, in _check_session_support
+    self._select_servers_loop(
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 238, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed, Timeout: 30s, Topology Description: <TopologyDescription id: 63119cdd5f2c03994325db0c, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('rdnc-shard-00-00.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-01.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-02.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed')>]>
+2022-09-02 11:34:50,462 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 11:34:50] "[35m[1mPOST /users/api/v1/login HTTP/1.1[0m" 500 -
+2022-09-02 11:35:00,451 INFO werkzeug Thread-2 : 127.0.0.1 - - [02/Sep/2022 11:35:00] "[31m[1mPOST /users/api/v1/ping HTTP/1.1[0m" 405 -
+2022-09-02 11:36:10,969 INFO werkzeug Thread-3 : 127.0.0.1 - - [02/Sep/2022 11:36:10] "GET /users/api/v1/ping HTTP/1.1" 200 -
+2022-09-02 11:36:59,793 ERROR rest_server_app Thread-4 : Exception on /users/api/v1/login [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 24, in login
+    user = users_bo.login(email, password)
+  File "/home/kevin/attendance-backend/src/students/students_bo.py", line 16, in login
+    user = self.users_repository.read(email)
+  File "/home/kevin/attendance-backend/src/students/students_repository.py", line 20, in read
+    return self.schema.find_one(filter=document)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/collection.py", line 1452, in find_one
+    for result in cursor.limit(-1):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1248, in next
+    if len(self.__data) or self._refresh():
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1139, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1712, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1657, in __start_session
+    self._topology._check_implicit_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 538, in _check_implicit_session_support
+    self._check_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 554, in _check_session_support
+    self._select_servers_loop(
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 238, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed, Timeout: 30s, Topology Description: <TopologyDescription id: 63119cdd5f2c03994325db0c, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('rdnc-shard-00-00.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-01.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-02.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed')>]>
+2022-09-02 11:36:59,794 INFO werkzeug Thread-4 : 127.0.0.1 - - [02/Sep/2022 11:36:59] "[35m[1mPOST /users/api/v1/login HTTP/1.1[0m" 500 -
+2022-09-02 11:37:30,397 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 11:38:18,758 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/login [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 24, in login
+    user = users_bo.login(email, password)
+  File "/home/kevin/attendance-backend/src/students/students_bo.py", line 16, in login
+    user = self.users_repository.read(email)
+  File "/home/kevin/attendance-backend/src/students/students_repository.py", line 20, in read
+    return self.schema.find_one(filter=document)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/collection.py", line 1452, in find_one
+    for result in cursor.limit(-1):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1248, in next
+    if len(self.__data) or self._refresh():
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1139, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1712, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1657, in __start_session
+    self._topology._check_implicit_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 538, in _check_implicit_session_support
+    self._check_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 554, in _check_session_support
+    self._select_servers_loop(
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 238, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed, Timeout: 30s, Topology Description: <TopologyDescription id: 63119da2a0493b91106c7223, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('rdnc-shard-00-00.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-01.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-02.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed')>]>
+2022-09-02 11:38:18,809 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 11:38:18] "[35m[1mPOST /users/api/v1/login HTTP/1.1[0m" 500 -
+2022-09-02 11:40:28,297 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 11:41:12,758 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 11:41:50,093 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/login [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 25, in login
+    user = users_bo.login(email, password)
+  File "/home/kevin/attendance-backend/src/students/students_bo.py", line 16, in login
+    user = self.users_repository.read(email)
+  File "/home/kevin/attendance-backend/src/students/students_repository.py", line 20, in read
+    return self.schema.find_one(filter=document)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/collection.py", line 1452, in find_one
+    for result in cursor.limit(-1):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1248, in next
+    if len(self.__data) or self._refresh():
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1139, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1712, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1657, in __start_session
+    self._topology._check_implicit_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 538, in _check_implicit_session_support
+    self._check_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 554, in _check_session_support
+    self._select_servers_loop(
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 238, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed, Timeout: 30s, Topology Description: <TopologyDescription id: 63119e80b8d907bd83a5a4e8, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('rdnc-shard-00-00.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-01.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-02.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed')>]>
+2022-09-02 11:41:50,100 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 11:41:50] "[35m[1mPOST /users/api/v1/login HTTP/1.1[0m" 500 -
+2022-09-02 11:42:21,351 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 11:42:57,023 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/login [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 25, in login
+    user = users_bo.login(email, password)
+  File "/home/kevin/attendance-backend/src/students/students_bo.py", line 16, in login
+    user = self.users_repository.read({'email': email})
+  File "/home/kevin/attendance-backend/src/students/students_repository.py", line 20, in read
+    return self.schema.find_one(filter=document)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/collection.py", line 1452, in find_one
+    for result in cursor.limit(-1):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1248, in next
+    if len(self.__data) or self._refresh():
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1139, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1712, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1657, in __start_session
+    self._topology._check_implicit_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 538, in _check_implicit_session_support
+    self._check_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 554, in _check_session_support
+    self._select_servers_loop(
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 238, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed, Timeout: 30s, Topology Description: <TopologyDescription id: 63119ec559ecb9356a696df1, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('rdnc-shard-00-00.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-01.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-02.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed')>]>
+2022-09-02 11:42:57,030 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 11:42:57] "[35m[1mPOST /users/api/v1/login HTTP/1.1[0m" 500 -
+2022-09-02 11:46:34,945 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 11:47:19,526 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/login [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 25, in login
+    user = users_bo.login(email, password)
+  File "/home/kevin/attendance-backend/src/students/students_bo.py", line 17, in login
+    user = self.users_repository.read({'email': email})
+  File "/home/kevin/attendance-backend/src/students/students_repository.py", line 20, in read
+    return self.schema.find_one(filter=document)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/collection.py", line 1452, in find_one
+    for result in cursor.limit(-1):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1248, in next
+    if len(self.__data) or self._refresh():
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/cursor.py", line 1139, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1712, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/mongo_client.py", line 1657, in __start_session
+    self._topology._check_implicit_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 538, in _check_implicit_session_support
+    self._check_session_support()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 554, in _check_session_support
+    self._select_servers_loop(
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/pymongo/topology.py", line 238, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed,rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed, Timeout: 30s, Topology Description: <TopologyDescription id: 63119fc2f769628174b16ba6, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('rdnc-shard-00-00.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-00.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-01.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-01.p8phn.mongodb.net:27017: connection closed')>, <ServerDescription ('rdnc-shard-00-02.p8phn.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rdnc-shard-00-02.p8phn.mongodb.net:27017: connection closed')>]>
+2022-09-02 11:47:19,556 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 11:47:19] "[35m[1mPOST /users/api/v1/login HTTP/1.1[0m" 500 -
+2022-09-02 11:52:38,934 INFO werkzeug Thread-2 : 127.0.0.1 - - [02/Sep/2022 11:52:38] "POST /users/api/v1/login HTTP/1.1" 200 -
+2022-09-02 11:54:33,861 INFO werkzeug Thread-3 : 127.0.0.1 - - [02/Sep/2022 11:54:33] "POST /users/api/v1/login HTTP/1.1" 200 -
+2022-09-02 11:57:30,270 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 11:57:52,251 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 11:57:52] "POST /users/api/v1/login HTTP/1.1" 200 -
+2022-09-02 12:00:45,127 INFO werkzeug Thread-2 : 127.0.0.1 - - [02/Sep/2022 12:00:45] "POST /users/api/v1/login HTTP/1.1" 200 -
+2022-09-02 12:16:44,139 ERROR rest_server_app Thread-3 : Exception on /users/api/v1/register [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 38, in register
+    return jsonify({'token': token})
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/json/__init__.py", line 302, in jsonify
+    f"{dumps(data, indent=indent, separators=separators)}\n",
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/json/__init__.py", line 132, in dumps
+    return _json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/json/__init__.py", line 51, in default
+    return super().default(o)
+  File "/usr/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ObjectId is not JSON serializable
+2022-09-02 12:16:44,201 INFO werkzeug Thread-3 : 127.0.0.1 - - [02/Sep/2022 12:16:44] "[35m[1mPOST /users/api/v1/register HTTP/1.1[0m" 500 -
+2022-09-02 12:19:07,520 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:19:11,259 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/register [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 37, in register
+    token = users_bo.register(email=email, password=password, first_name=first_name, last_name=last_name, role=role, roll_no=roll_no, class_name=class_name)
+  File "/home/kevin/attendance-backend/src/students/students_bo.py", line 47, in register
+    raise Exception('User %s already exist' % email)
+Exception: User warnermusicunreleased@gmail.com already exist
+2022-09-02 12:19:11,262 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:19:11] "[35m[1mPOST /users/api/v1/register HTTP/1.1[0m" 500 -
+2022-09-02 12:20:17,693 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:20:28,421 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:20:28] "POST /users/api/v1/register HTTP/1.1" 200 -
+2022-09-02 12:22:58,685 ERROR rest_server_app Thread-2 : Exception on /users/api/v1/log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 44, in log
+    return attendance_bo.log_attendance(id=id)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 24, in log_attendance
+    if (attendance['created_at']).strftime('%Y-%m-%d') != today.strftime('%Y-%m-%d'):
+TypeError: 'NoneType' object is not subscriptable
+2022-09-02 12:22:58,716 INFO werkzeug Thread-2 : 127.0.0.1 - - [02/Sep/2022 12:22:58] "[35m[1mPOST /users/api/v1/log HTTP/1.1[0m" 500 -
+2022-09-02 12:24:05,057 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:24:08,073 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 44, in log
+    return attendance_bo.log_attendance(id=id)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 25, in log_attendance
+    if (attendance['created_at']).strftime('%Y-%m-%d') != today.strftime('%Y-%m-%d'):
+TypeError: 'NoneType' object is not subscriptable
+2022-09-02 12:24:08,079 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:24:08] "[35m[1mPOST /users/api/v1/log HTTP/1.1[0m" 500 -
+2022-09-02 12:24:36,676 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:25:28,973 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 44, in log
+    return attendance_bo.log_attendance(id=id)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 26, in log_attendance
+    if (attendance['created_at']).strftime('%Y-%m-%d') != today.strftime('%Y-%m-%d'):
+TypeError: 'NoneType' object is not subscriptable
+2022-09-02 12:25:28,976 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:25:28] "[35m[1mPOST /users/api/v1/log HTTP/1.1[0m" 500 -
+2022-09-02 12:25:54,785 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:25:57,905 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 44, in log
+    return attendance_bo.log_attendance(id=id)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 26, in log_attendance
+    if attendance is None and (attendance['created_at']).strftime('%Y-%m-%d') != today.strftime('%Y-%m-%d'):
+TypeError: 'NoneType' object is not subscriptable
+2022-09-02 12:25:57,909 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:25:57] "[35m[1mPOST /users/api/v1/log HTTP/1.1[0m" 500 -
+2022-09-02 12:27:49,671 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:27:53,486 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 44, in log
+    return attendance_bo.log_attendance(id=id)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 26, in log_attendance
+    if attendance is None and (attendance['created_at']).strftime('%Y-%m-%d') != today.strftime('%Y-%m-%d'):
+TypeError: 'NoneType' object is not subscriptable
+2022-09-02 12:27:53,489 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:27:53] "[35m[1mPOST /users/api/v1/log HTTP/1.1[0m" 500 -
+2022-09-02 12:28:11,784 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:28:16,165 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:28:16] "POST /users/api/v1/log HTTP/1.1" 200 -
+2022-09-02 12:31:56,298 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:35:08,908 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:35:49,171 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 32, in fliter_class
+    start_date = date.replace(hour=0, minute=0, second=0)
+TypeError: str.replace() takes no keyword arguments
+2022-09-02 12:35:49,176 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:35:49] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:35:59,559 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:36:02,400 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 32, in fliter_class
+    start_date = date.replace(hour=0, minute=0, second=0)
+TypeError: str.replace() takes no keyword arguments
+2022-09-02 12:36:02,405 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:36:02] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:36:25,354 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:36:27,991 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 33, in fliter_class
+    start_date = date.replace(hour=0, minute=0, second=0)
+TypeError: str.replace() takes no keyword arguments
+2022-09-02 12:36:27,998 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:36:27] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:36:41,469 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:36:44,821 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 33, in fliter_class
+    start_date = date.replace(hour=0, minute=0, second=0)
+TypeError: str.replace() takes no keyword arguments
+2022-09-02 12:36:44,831 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:36:44] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:42:38,772 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:42:42,233 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 32, in fliter_class
+    date_obj =  datetime.strptime(date, '%d-%m-%y')
+  File "/usr/lib/python3.9/_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "/usr/lib/python3.9/_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2022-09-02' does not match format '%d-%m-%y'
+2022-09-02 12:42:42,259 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:42:42] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:42:45,471 ERROR rest_server_app Thread-2 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 32, in fliter_class
+    date_obj =  datetime.strptime(date, '%d-%m-%y')
+  File "/usr/lib/python3.9/_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "/usr/lib/python3.9/_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2022-09-02' does not match format '%d-%m-%y'
+2022-09-02 12:42:45,481 INFO werkzeug Thread-2 : 127.0.0.1 - - [02/Sep/2022 12:42:45] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:43:07,030 ERROR rest_server_app Thread-3 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 32, in fliter_class
+    date_obj =  datetime.strptime(date, '%d-%m-%y')
+  File "/usr/lib/python3.9/_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "/usr/lib/python3.9/_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2022-09-02' does not match format '%d-%m-%y'
+2022-09-02 12:43:07,031 INFO werkzeug Thread-3 : 127.0.0.1 - - [02/Sep/2022 12:43:07] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:43:33,829 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:43:41,853 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:43:44,717 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 33, in fliter_class
+    date_obj = datetime.strptime(date, '%d-%m-%y')
+  File "/usr/lib/python3.9/_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "/usr/lib/python3.9/_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2022-09-02' does not match format '%d-%m-%y'
+2022-09-02 12:43:44,721 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:43:44] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:43:55,153 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:43:56,880 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 33, in fliter_class
+    date_obj = datetime.strptime(date, '%d-%m-%y')
+  File "/usr/lib/python3.9/_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "/usr/lib/python3.9/_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2022-09-02' does not match format '%d-%m-%y'
+2022-09-02 12:43:56,886 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:43:56] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:44:01,161 ERROR rest_server_app Thread-2 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 33, in fliter_class
+    date_obj = datetime.strptime(date, '%d-%m-%y')
+  File "/usr/lib/python3.9/_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "/usr/lib/python3.9/_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2022-09-02' does not match format '%d-%m-%y'
+2022-09-02 12:44:01,162 INFO werkzeug Thread-2 : 127.0.0.1 - - [02/Sep/2022 12:44:01] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:44:36,325 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:44:40,554 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 33, in fliter_class
+    date_obj = datetime.strptime(date, '%d-%m-%y')
+  File "/usr/lib/python3.9/_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "/usr/lib/python3.9/_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2022-09-02' does not match format '%d-%m-%y'
+2022-09-02 12:44:40,556 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:44:40] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:50:51,861 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:50:57,687 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 34, in fliter_class
+    date_obj = datetime.strptime(date, '%d/%m/%y')
+  File "/usr/lib/python3.9/_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "/usr/lib/python3.9/_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '09/19/18' does not match format '%d/%m/%y'
+2022-09-02 12:50:57,707 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:50:57] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:52:06,691 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:52:11,000 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:52:11] "POST /users/api/v1/student_log HTTP/1.1" 200 -
+2022-09-02 12:53:08,429 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:53:12,252 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 36, in fliter_class
+    date_obj = datetime.strptime(date, '%y/%m/%d')
+  File "/usr/lib/python3.9/_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "/usr/lib/python3.9/_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2022-09-02' does not match format '%y/%m/%d'
+2022-09-02 12:53:12,255 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:53:12] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:53:28,969 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:53:32,070 ERROR rest_server_app Thread-1 : Exception on /users/api/v1/student_log [POST]
+Traceback (most recent call last):
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kevin/attendance-backend/venv/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/kevin/attendance-backend/src/students/students_app.py", line 51, in get_log
+    data = attendance_bo.fliter_class(name=name,date=date)
+  File "/home/kevin/attendance-backend/src/attendance/attendance_bo.py", line 36, in fliter_class
+    date_obj = datetime.strptime(date, '%y-%m-%d')
+  File "/usr/lib/python3.9/_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "/usr/lib/python3.9/_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2022-09-02' does not match format '%y-%m-%d'
+2022-09-02 12:53:32,073 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:53:32] "[35m[1mPOST /users/api/v1/student_log HTTP/1.1[0m" 500 -
+2022-09-02 12:53:56,183 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:54:01,366 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:54:01] "POST /users/api/v1/student_log HTTP/1.1" 200 -
+2022-09-02 12:54:29,203 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:55:01,782 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:55:08,561 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:55:08] "POST /users/api/v1/student_log HTTP/1.1" 200 -
+2022-09-02 12:55:40,503 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 12:55:45,358 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 12:55:45] "POST /users/api/v1/student_log HTTP/1.1" 200 -
+2022-09-02 14:14:47,895 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 14:15:24,750 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 14:15:38,631 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 14:15:38] "POST /users/api/v1/student_log HTTP/1.1" 200 -
+2022-09-02 14:20:33,613 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 14:20:37,512 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 14:20:37] "POST /users/api/v1/student_log HTTP/1.1" 200 -
+2022-09-02 14:21:38,620 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 14:21:48,129 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 14:21:52,627 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 14:21:52] "POST /users/api/v1/student_log HTTP/1.1" 200 -
+2022-09-02 14:33:54,685 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.126:5000 (Press CTRL+C to quit)
+2022-09-02 14:34:01,966 INFO werkzeug Thread-1 : 127.0.0.1 - - [02/Sep/2022 14:34:01] "POST /users/api/v1/student_log HTTP/1.1" 200 -

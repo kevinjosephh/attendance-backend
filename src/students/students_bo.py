@@ -13,7 +13,7 @@ class UsersBO:
         return user
 
     def login(self, email, password):
-        user = self.users_repository.read(email)
+        user = self.users_repository.read({'email': email})
         if user is not None and not ('account' in user and user['account'] or 'deleted' in user and user['deleted']):
             salt = user["salt"]
             db_password = password + salt
@@ -40,6 +40,7 @@ class UsersBO:
         }
         user = self._read(document={'email': email})
         if user is None:
+            print('yes')
             self.users_repository.create(document)
             # TODO send email with the reset link.
             return self._read(document={'email': email})
