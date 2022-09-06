@@ -1,12 +1,10 @@
 import json
 
 from bson import json_util
-from flask import Blueprint, jsonify, request, redirect
+from flask import Blueprint, jsonify, request
 
-from app import auth_bo
-from app.auth_bo import auth
-from app.attendance.attendance_bo import AttendanceBO
-from app.students.students_bo import UsersBO
+from src.attendance.attendance_bo import AttendanceBO
+from src.students.students_bo import UsersBO
 
 users_blueprint = Blueprint('users', __name__, url_prefix='/users/api/v1')
 

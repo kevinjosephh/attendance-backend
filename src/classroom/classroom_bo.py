@@ -1,9 +1,6 @@
-import bson
-from datetime import datetime
+from src.students.students_bo import UsersBO
 
-from app.students.students_bo import UsersBO
-
-from app.classroom.classroom_repository import ClassroomRepository
+from src.classroom.classroom_repository import ClassroomRepository
 
 
 class AttendanceBO:

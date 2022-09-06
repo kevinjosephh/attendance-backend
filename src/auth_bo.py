@@ -1,5 +1,5 @@
 from flask_httpauth import HTTPTokenAuth
-from app.constants import JWT_SECRET_KEY
+from src.constants import JWT_SECRET_KEY
 import jwt
 import logging
 

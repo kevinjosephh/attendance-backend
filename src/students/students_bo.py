@@ -5,8 +5,8 @@ import uuid
 import bson
 import jwt
 
-from app.constants import JWT_SECRET_KEY
-from app.students.students_repository import StudentsRepository
+from src.constants import JWT_SECRET_KEY
+from src.students.students_repository import StudentsRepository
 
 
 class UsersBO:
