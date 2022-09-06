@@ -3,8 +3,8 @@ import datetime
 import pymongo
 from bson import ObjectId
 
-from src.constants import MONGO_CLIENT
-from src.schema_constants import CUSTOMER_DB, CUSTOMER_DB_ATTENDANCE
+from app.constants import MONGO_CLIENT
+from app.schema_constants import CUSTOMER_DB, CUSTOMER_DB_ATTENDANCE
 
 
 class AttendanceRepository:

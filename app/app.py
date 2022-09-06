@@ -1,7 +1,7 @@
 from flask import Flask, make_response, jsonify
 import logging
 
-from src.students.students_app import users_blueprint
+from app.students.students_app import users_blueprint
 
 logging.basicConfig(filename='app.log', level=logging.DEBUG,
                     format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
