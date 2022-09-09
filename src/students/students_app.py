@@ -3,6 +3,7 @@ import json
 from bson import json_util
 from flask import Blueprint, jsonify, request
 
+from src.classroom.classroom_bo import ClassroomBO
 from src.attendance.attendance_bo import AttendanceBO
 from src.students.students_bo import UsersBO
 
@@ -10,6 +11,7 @@ users_blueprint = Blueprint('users', __name__, url_prefix='/users/api/v1')
 
 users_bo = UsersBO()
 attendance_bo = AttendanceBO()
+classroom_bo = ClassroomBO()
 
 @users_blueprint.route('/ping')
 def index():
@@ -57,4 +59,13 @@ def get_log():
     name = str(data['class_name']).strip()
     date = str(data['date']).strip()
     data = attendance_bo.fliter_class(name=name,date=date)
+    return jsonify(data)
+
+@users_blueprint.route('/add_class/', methods=['POST'])
+def add_class():
+    data = json.loads(request.data)
+    name = str(data['name']).strip()
+    start_date = str(data['start_date']).strip()
+    end_date = str(data['end_date']).strip()
+    data = classroom_bo.add_class(name, start_date, end_date)
     return jsonify(data)
