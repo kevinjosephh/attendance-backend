@@ -47,6 +47,14 @@ def profile(id):
     profile = users_bo.profile(id)
     return json_util.dumps(profile)
 
+@users_blueprint.route('/profiles/', methods=['GET'])
+# @auth.login_required
+def profiles():
+    # user = auth.current_user()
+    # id = '62e6c771c58ad4f71827b8d3'
+    profile = users_bo.profiles()
+    return json_util.dumps(profile)
+
 @users_blueprint.route('/log', methods=['POST'])
 def log():
     data = json.loads(request.data)

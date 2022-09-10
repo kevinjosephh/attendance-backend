@@ -71,5 +71,27 @@ class UsersBO:
             'roll_no': user['roll_no'],
             'class_name': user['class_name'],
             'email': user['email'],
+            'password': user['password']
         }
         return data
+
+    def profiles(self):
+        users = self.users_repository.read_all()
+        result = []
+        for user in users:
+            data = {
+                'id': str(user['_id']),
+                'first_name': user['first_name'],
+                'last_name': user['last_name'],
+                'role': user['role'],
+                'roll_no': user['roll_no'],
+                'class_name': user['class_name'],
+                'email': user['email'],
+                'password': user['password']
+            }
+            result.append(data)
+        return result
+
+if __name__ == '__main__':
+    user = UsersBO()
+    print(user.profiles())
