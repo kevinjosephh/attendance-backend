@@ -76,6 +76,11 @@ def view_attendance(id):
     profile = attendance_bo.all_log(id=id)
     return json_util.dumps(profile)
 
+@users_blueprint.route('/report/<id>/', methods=['GET'])
+def view_attendance(id):
+    profile = attendance_bo.report(id=id)
+    return json_util.dumps(profile)
+
 @users_blueprint.route('/log', methods=['POST'])
 def log():
     data = json.loads(request.data)

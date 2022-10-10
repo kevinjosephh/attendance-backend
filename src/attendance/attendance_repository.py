@@ -19,6 +19,9 @@ class AttendanceRepository:
     def read_all(self, document):
         return self.schema.find(filter=document)
 
+    def count_all(self, document):
+        return self.schema.count_documents(filter=document)
+
 if __name__ == '__main__':
     a= AttendanceRepository()
     date = '2022-09-01'
