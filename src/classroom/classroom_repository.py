@@ -11,7 +11,7 @@ class ClassroomRepository:
     def create(self, document):
         document['created_at'] = datetime.datetime.utcnow()
         document['updated_at'] = datetime.datetime.utcnow()
-        self.schema.insert_one(document=document)
+        return self.schema.insert_one(document=document)
 
     def read(self, document):
         return self.schema.find_one(filter=document)
