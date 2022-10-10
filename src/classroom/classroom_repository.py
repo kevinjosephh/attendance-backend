@@ -16,5 +16,5 @@ class ClassroomRepository:
     def read(self, document):
         return self.schema.find_one(filter=document)
 
-    def read_all(self, document):
-        return self.schema.find(filter=document)
+    def read_all(self):
+        return self.schema.find()

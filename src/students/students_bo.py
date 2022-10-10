@@ -75,8 +75,29 @@ class UsersBO:
         }
         return data
 
-    def profiles(self):
-        users = self.users_repository.read_all()
+    def studentprofiles(self):
+        users = self.users_repository.read_all(document={
+            'role':'Student'
+        })
+        result = []
+        for user in users:
+            data = {
+                'id': str(user['_id']),
+                'first_name': user['first_name'],
+                'last_name': user['last_name'],
+                'role': user['role'],
+                'roll_no': user['roll_no'],
+                'class_name': user['class_name'],
+                'email': user['email'],
+                'password': user['password']
+            }
+            result.append(data)
+        return result
+
+    def teacherprofiles(self):
+        users = self.users_repository.read_all(document={
+            'role':'Teacher'
+        })
         result = []
         for user in users:
             data = {

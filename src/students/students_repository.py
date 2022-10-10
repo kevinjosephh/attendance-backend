@@ -17,8 +17,8 @@ class StudentsRepository:
 
     def read(self, document):
         return self.schema.find_one(filter=document)
-    def read_all(self):
-        return self.schema.find()
+    def read_all(self,document):
+        return self.schema.find(filter=document)
 
     def read_by_id(self, id):
         return self.schema.find_one(filter={'_id': ObjectId(id)})

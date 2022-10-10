@@ -27,12 +27,21 @@ class AttendanceBO:
         else:
             return False
 
+    def all_log(self, id):
+        attends = AttendanceRepository.read_all(document={'user_id':id})
+        results = []
+        for attend in attends:
+            data = {
+                'id': str(attend['_id']),
+                'user_id': attend['id'],
+                'classroom': attend['class_name'],
+                'email': attend['email'],
+                'roll_no': attend['roll_no']
+            }
+            results.append(data)
+        return results
     def fliter_class(self, name, date):
         date_obj = datetime.strptime(date, '%Y-%m-%d')
         start_date = date_obj.replace(hour=0, minute=0, second=0)
         end_date = date_obj.replace(hour=23, minute=59, second=59)
         return self.attendance_repository.read_all(document={'classroom': name, 'created_at': {'$gte':start_date,'$lte':end_date}})
-
-if __name__ == '__main__':
-    attend = AttendanceBO()
-    print(attend.log_attendance(id="62e6c771c58ad4f71827b8d3"))
