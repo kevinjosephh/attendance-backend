@@ -77,7 +77,7 @@ def view_attendance(id):
     return json_util.dumps(profile)
 
 @users_blueprint.route('/report/<id>/', methods=['GET'])
-def view_attendance(id):
+def view_report(id):
     profile = attendance_bo.report(id=id)
     return json_util.dumps(profile)
 
