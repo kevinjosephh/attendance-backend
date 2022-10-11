@@ -22,7 +22,7 @@ class ClassroomBO:
         course = self.classroom_repository.read(document=document)
         data = {
             'id': str(course['_id']),
-            'class': course['class'],
+            '_class': course['class'],
             'start_date': datetime.datetime.strftime(course['start_date'],'%d-%m-%y'),
             'end_date': datetime.datetime.strftime(course['end_date'],'%d-%m-%y'),
         }
@@ -33,7 +33,7 @@ class ClassroomBO:
         for course in courses:
             data = {
                 'id': str(course['_id']),
-                'class': course['class'],
+                '_class': course['class'],
                 'start_date': datetime.datetime.strftime(course['start_date'],'%d-%m-%y'),
                 'end_date': datetime.datetime.strftime(course['end_date'],'%d-%m-%y'),
             }
