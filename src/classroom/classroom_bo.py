@@ -23,8 +23,8 @@ class ClassroomBO:
         data = {
             'id': str(course['_id']),
             'class': course['class'],
-            'start_date': course['start_date'],
-            'end_date': course['end_date'],
+            'start_date': datetime.datetime.strftime(course['start_date'],'%d-%m-%y'),
+            'end_date': datetime.datetime.strftime(course['end_date'],'%d-%m-%y'),
         }
         return data
     def courses(self):
@@ -34,8 +34,8 @@ class ClassroomBO:
             data = {
                 'id': str(course['_id']),
                 'class': course['class'],
-                'start_date': course['start_date'],
-                'end_date': course['end_date'],
+                'start_date': datetime.datetime.strftime(course['start_date'],'%d-%m-%y'),
+                'end_date': datetime.datetime.strftime(course['end_date'],'%d-%m-%y'),
             }
             result.append(data)
         return result
